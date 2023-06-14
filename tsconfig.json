@@ -1,0 +1,43 @@
+{
+  "compilerOptions": {
+    "target": "ES2015",
+    "outDir": "dist",
+    "module": "esnext",
+    "lib": [
+      "dom",
+      "esnext"
+    ],
+    "moduleResolution": "node",
+    "jsx": "react",
+    "sourceMap": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "noImplicitReturns": false,
+    "noImplicitThis": true,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true,
+    // "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "example",
+    "lib",
+    "__test__"
+  ]
+}

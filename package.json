@@ -1,0 +1,85 @@
+{
+  "name": "wx-3d-ar-viewer",
+  "version": "1.0.0",
+  "description": "wechat AR and 3D Viewer",
+  "main": "dist/modelArWx.js",
+  "module": "dist/modelArWx.module.js",
+  "exports": {
+    "./wx3D": "./dist/model3D.modern.js",
+    "./wxAR": "./dist/modelAr.modern.js"
+  },
+  "files": [
+    "dist",
+    "lib"
+  ],
+  "scripts": {
+    "build": "npm run version:output && microbundle-crl src/AR/*.js src/3D/*.js --compress --format modern,cjs,es",
+    "start": "npm run version:output && microbundle-crl src/AR/*.js src/3D/*.js --watch --no-compress --format modern,cjs,es",
+    "version:output": "echo 'export const Version = \"'$npm_package_version'\"; \n export const SDKName = \"'$npm_package_name'\";' > version.js",
+    "commit": "lint-staged && git cz",
+    "lint-staged": "lint-staged",
+    "test:unit": "jest --silent --json --outputFile=report/jest.json --config=jest.config.js",
+    "changelog": "conventional-changelog -p custom-config -i CHANGELOG.md -s -r 0  -n ./changelog-option.js"
+  },
+  "keywords": [
+    "3D",
+    "AR",
+    "threejs",
+    "wechat",
+    "wx"
+  ],
+  "author": "xinfei",
+  "license": "ISC",
+  "dependencies": {
+    "three-platformize": "1.133.3"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^15.0.0",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@typescript-eslint/eslint-plugin": "^5.5.0",
+    "@typescript-eslint/parser": "^5.5.0",
+    "babel-jest": "^27.5.1",
+    "commitizen": "^4.2.4",
+    "conventional-changelog": "^3.1.24",
+    "conventional-changelog-cli": "^2.2.2",
+    "conventional-changelog-custom-config": "^0.3.1",
+    "cz-customizable": "^6.3.0",
+    "eslint": "^8.3.0",
+    "eslint-config-airbnb": "^19.0.2",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.27.1",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "husky": "^4.3.8",
+    "jest": "^27.5.1",
+    "jest-html-reporters": "^3.0.6",
+    "jest-watch-typeahead": "^1.0.0",
+    "lint-staged": "^10.5.3",
+    "microbundle": "0.14.2",
+    "microbundle-crl": "0.13.11",
+    "prettier": "^2.5.0",
+    "ts-jest": "^27.1.4"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "eslint --fix",
+      "prettier --parser=typescript --write"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./.czconfigrc.js"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  }
+}
